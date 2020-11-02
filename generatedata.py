@@ -30,42 +30,49 @@ def generateData():
         
         #Menu items
         cnt_items = random.randint(10, 25)
-        f.write(str(cnt_items) + '\n')
+        #f.write(str(cnt_items) + '\n')
 
 
         for i in range(1, cnt_items):
+            
             item_ingredients = ['other']
             
             item_name = "Item" + str(i)
             item_price = random.randint(2,10)
             item_calories = random.randint(150, 900)
             
+            f.write(item_name + ' ' + str(item_price) + ' ' + str(item_calories) + '\n')
+            f.write('other' + ' ')
             #Item Ingredients
             used = {}
             meet_cnt = random.randint(0, 3)
-            for i in range(0, meet_cnt):
+            for k in range(0, meet_cnt):
                 item_number = random.randint(0, 6)
                 if not item_number in used:   
                     item_ingredients.append(Ingredients['meet'][item_number])
+                    f.write(Ingredients['meet'][item_number] + ' ')
                     used[item_number] = 1
                     
             used = {}            
             vegetables_cnt = random.randint(0,2)
-            for i in range(0, vegetables_cnt):
+            for k in range(0, vegetables_cnt):
                 item_number = random.randint(0, 3)
                 if not item_number in used:   
                     item_ingredients.append(Ingredients['vegetables'][item_number])
+                    f.write(Ingredients['vegetables'][item_number] + ' ')
                     used[item_number] = 1 
                     
             used = {}    
             dairy_cnt = random.randint(0,2)
-            for i in range(0, dairy_cnt):
+            for k in range(0, dairy_cnt):
                 item_number = random.randint(0, 3)
                 if not item_number in used: 
                     item_ingredients.append(Ingredients['dairy'][item_number])
+                    f.write(Ingredients['dairy'][item_number] + ' ')
                     used[item_number] = 1
             
-            f.write(str(item_ingredients) + '\n')
+            
+            f.write('\n')
     f.close()
     
 generateData()
